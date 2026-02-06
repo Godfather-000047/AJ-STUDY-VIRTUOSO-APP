@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 12 Exam Simulator</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e3a8a">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>🎓AJ STUDY VIRTUOSO</h1>
+    <p>Learn. Practice. Improve.</p>
+  </header>
+
+  <!-- SUBJECT SELECTION -->
+  <section class="subjects">
+    <div class="card maths" onclick="selectSubject('math')">
+      <h2>📐 Mathematics</h2>
+      <p>Algebra • Trigonometry • Calculus • Statistics</p>
+      <button>Start Practice</button>
+    </div>
+
+    <div class="card science" onclick="selectSubject('science')">
+      <h2>⚗️ Physical Sciences</h2>
+      <p>Physics • Chemistry</p>
+      <button>Start Practice</button>
+    </div>
+  </section>
+
+  <!-- TOPIC SELECTION -->
+  <section id="topicSelection" class="topic-section" style="display:none;">
+    <label for="topicDropdown">Select Topic:</label>
+    <select id="topicDropdown" onchange="generateQuestion()">
+    </select>
+  </section>
+
+  <!-- QUESTION PANEL -->
+  <section class="question-panel">
+    <h3 id="topicTitle">Choose a subject and topic to begin</h3>
+
+    <div id="questionBox">
+      <p id="questionText">Your question will appear here.</p>
+    </div>
+
+    <input type="number" id="answerInput" placeholder="Enter your answer">
+
+    <div class="buttons">
+      <button onclick="submitAnswer()">Submit Answer</button>
+      <button onclick="generateQuestion()">New Question</button>
+    </div>
+
+    <p id="feedback"></p>
+  </section>
+
+  <!-- PROGRESS -->
+  <section class="progress-section">
+    <label>Session Progress</label>
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+    <p id="progressText">0 questions answered</p>
+  </section>
+
+  <!-- RESET -->
+  <section class="reset-section">
+    <button onclick="resetPractice()">🔄 Reset Practice</button>
+  </section>
+
+  <script src="script.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
